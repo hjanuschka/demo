@@ -7,6 +7,14 @@ parameters:
     app.notifications.email_sender: anonymous@example.com
 
 services:
+    krn.demo:
+        class: App\EventSubscriber\Demo
+        public: false
+        shared: false
+        tags:
+          - { name: kernel.event_listener, event: krn.demo, method: onEvent }
+
+
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
